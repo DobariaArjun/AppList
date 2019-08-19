@@ -39,7 +39,7 @@ client.connect((err, db) => {
                 var myobj = {
                     app_name: req.body.app_name,
                     package_name: req.body.package_name,
-                    icon_url: req.headers.host + "/uploads/images/" + req.file.originalname,
+                    icon_url: "http://"+req.headers.host + "/uploads/images/" + req.file.originalname,
                     zone: req.body.gender1,
                     account_name: req.body.gender
                 };
