@@ -78,6 +78,9 @@ client.connect((err, db) => {
         })
 
         app.post('/getApp', (req, res) => {
+            
+            console.log(req.body);
+            
             var zone = req.body.zone.toUpperCase()
 
             collection.find({zone: zone}).toArray(function (err, result) {
