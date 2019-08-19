@@ -97,7 +97,7 @@ client.connect((err, db) => {
                     }
                     shuffle(result);
                     appArray = result.slice(0,4);
-                    res.json({data: appArray});
+                    res.json({status: true, data: appArray});
                 }
             });
         })
