@@ -97,7 +97,10 @@ client.connect((err, db) => {
                     }
                     shuffle(result);
                     appArray = result.slice(0,4);
-                    res.send(appArray);
+//                    res.send(appArray);
+                    res.status(200).json({
+		message: "Data received successfully"
+	});
                 }
             });
         })
