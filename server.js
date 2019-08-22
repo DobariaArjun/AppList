@@ -7,7 +7,7 @@ const fs = require('fs');
 const multer = require('multer');
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, 'public/uploads/images')
+        cb(null, 'http://mantratechnolog.com/materiales/AppAds/public/uploads/images')
     },
     filename: (req, file, cb) => {
         cb(null, file.originalname)
@@ -30,11 +30,11 @@ client.connect((err, db) => {
 
         app.use(express.json());
 
-        app.get('/', (req, res) => {
-            res.sendFile(__dirname + '/public/index.html');
+        app.get('/materiales/AppAds', (req, res) => {
+            res.sendFile('http://mantratechnolog.com/materiales/AppAds/index.html');
         });
 
-        app.post('/view', upload.single('app_icon'), (req, res) => {
+        app.post('/materiales/AppAds/view', upload.single('app_icon'), (req, res) => {
             if (req.file && req.body) {
                 var myobj = {
                     app_name: req.body.app_name,
@@ -51,13 +51,13 @@ client.connect((err, db) => {
                     console.log("Inserted Successfully");
                 });
 
-                res.sendFile(__dirname + '/public/view.html');
+                res.sendFile('http://mantratechnolog.com/materiales/AppAds/view.html');
             } else {
                 res.send("Plase provide Data!")
             }
         });
 
-        app.get('/viewData', (req, res) => {
+        app.get('/materiales/AppAds/viewData', (req, res) => {
             collection.find({}).toArray((err, result) => {
                 if (err) {
                     console.log(err);
@@ -72,9 +72,9 @@ client.connect((err, db) => {
             });
         })
 
-        app.get('/view', (req, res) => {
+        app.get('/materiales/AppAds/view', (req, res) => {
             console.log(req.headers.host);
-            res.sendFile(__dirname + '/public/view.html');
+            res.sendFile('http://mantratechnolog.com/materiales/AppAds/view.html');
         })
 
         app.post('/getApp', (req, res) => {
