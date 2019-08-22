@@ -30,16 +30,16 @@ client.connect((err, db) => {
 
         app.use(express.json());
 
-        app.get('/materiales/AppAds', (req, res) => {
-            res.sendFile('http://mantratechnolog.com/materiales/AppAds/index.html');
+        app.get('/', (req, res) => {
+            res.sendFile(__dirname + '/public/index.html');
         });
 
-        app.post('/materiales/AppAds/view', upload.single('app_icon'), (req, res) => {
+        app.post('/view', upload.single('app_icon'), (req, res) => {
             if (req.file && req.body) {
                 var myobj = {
                     app_name: req.body.app_name,
                     package_name: req.body.package_name,
-                    icon_url: "https://"+req.headers.host + "/uploads/images/" + req.file.originalname,
+                    icon_url: "http://mantratechnolog.com/materiales/AppAds/public/uploads/images/" + req.file.originalname,
                     zone: req.body.gender1,
                     account_name: req.body.gender
                 };
@@ -51,13 +51,13 @@ client.connect((err, db) => {
                     console.log("Inserted Successfully");
                 });
 
-                res.sendFile('http://mantratechnolog.com/materiales/AppAds/view.html');
+                res.sendFile(__dirname + '/public/view.html');
             } else {
                 res.send("Plase provide Data!")
             }
         });
 
-        app.get('/materiales/AppAds/viewData', (req, res) => {
+        app.get('/viewData', (req, res) => {
             collection.find({}).toArray((err, result) => {
                 if (err) {
                     console.log(err);
@@ -72,9 +72,9 @@ client.connect((err, db) => {
             });
         })
 
-        app.get('/materiales/AppAds/view', (req, res) => {
+        app.get('/view', (req, res) => {
             console.log(req.headers.host);
-            res.sendFile('http://mantratechnolog.com/materiales/AppAds/view.html');
+            res.sendFile(__dirname + '/public/view.html');
         })
 
         app.post('/getApp', (req, res) => {

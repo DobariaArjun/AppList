@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mantra Technolog</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="vendor/jquery-ui/jquery-ui.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/style.css">
+    <!--    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+
+
+    <link rel="Javascript" href="https://code.jquery.com/jquery-3.3.1.js">
+    <link rel="Javascript" href="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js">
+    <link rel="Javascript" href="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var table = $("#myTable");
+            $.ajax({
+                url: 'https://appads.herokuapp.com/viewData',
+                method: "GET",
+                success: function (data) {
+                    // table.empty();
+                    $.each(data, function (a, b) {
+                        table.append("<tr><td>"+b.app_name+"</td>" +
+                            "<td>"+b.package_name+"</td>"+
+                            "<td>" + b.zone + "</td>" +
+                            "<td>" + b.account_name + "</td></tr>");
+                    });
+
+                    $(".display").DataTable();
+                }
+            });
+        });
+    </script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        #myInput {
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            width: 100%;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            margin-bottom: 12px;
+        }
+
+        #myTable {
+            border-collapse: collapse;
+            width: 100%;
+            border: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        #myTable th, #myTable td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        #myTable tr {
+            border-bottom: 1px solid #ddd;
+        }
+
+        #myTable tr.header, #myTable tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+
+</head>
+<body style="padding: 10px; background-color: #c5e9ff">
+
+<div class="main">
+
+    <section class="signup">
+        <div class="container">
+            <div class="signup-content">
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for account names.."
+                       title="Type in a name">
+                <table id="myTable">
+                    <tr class="header">
+                        <th style="width:20%;">App Name</th>
+                        <th style="width:20%;">Package Name</th>
+                        <th style="width:20%;">Zone Name</th>
+                        <th style="width:20%;">Acconut Name</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<script>
+    function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[3];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

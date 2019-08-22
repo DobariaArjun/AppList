@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mantra Technolog</title>
+
+    <link rel="stylesheet" href="vendor/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+</head>
+<body>
+
+<div class="main">
+
+    <section class="signup">
+        <!-- <img src="images/signup-bg.jpg" alt=""> -->
+        <div class="container">
+            <div class="signup-content">
+                <form action="view" method="post" id="signup-form" class="signup-form" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="app_name">App name</label>
+                        <input type="text" class="form-input" name="app_name" id="app_name"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="package_name">Package name</label>
+                        <input type="text" class="form-input" name="package_name" id="package_name"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="app_icon">App icon</label>
+                        <input type="file" accept="image/*" class="form-input" name="app_icon" id="app_icon"/>
+                    </div>
+
+                    <div class="form-radio">
+                        <label>Account</label>
+                        <div class="form-flex">
+                            <input type="radio" name="gender" value="TriTech" id="tritech" checked="checked"/>
+                            <label for="tritech">Tri Tech</label>
+
+                            <input type="radio" name="gender" value="Mantra" id="mantra"/>
+                            <label for="mantra">Mantra</label>
+
+                            <input type="radio" name="gender" value="HK" id="hk"/>
+                            <label for="hk">HK</label>
+
+                            <input type="radio" name="gender" value="ArtSol" id="artsol"/>
+                            <label for="artsol">ArtSol</label>
+                        </div>
+                    </div>
+                    <div class="form-radio">
+                        <label>Zone</label>
+                        <div class="form-flex">
+                            <input type="checkbox" name="gender1" value="USA" id="usa" checked="checked"/>
+                            <label for="usa">USA</label>
+
+                            <input type="checkbox" name="gender1" value="EUROPE" id="europe"/>
+                            <label for="europe">EUROPE</label>
+
+                            <input type="checkbox" name="gender1" value="INDIA" id="india"/>
+                            <label for="india">INDIA</label>
+
+                            <input type="checkbox" name="gender1" value="ASIA" id="asia"/>
+                            <label for="asia">ASIA</label>
+
+                            <input type="checkbox" name="gender1" value="AFRICA" id="africa"/>
+                            <label for="africa">AFRICA</label>
+
+                            <input type="checkbox" name="gender1" value="ALL" id="all"/>
+                            <label for="all">ALL</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <a href="view">
+                            <input type="button" name="view" id="view" class="form-submit" value="View"/>
+                        </a>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="submit" id="submit" class="form-submit" value="Submit"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- JS -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/jquery-ui/jquery-ui.min.js"></script>
+<script src="vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="vendor/jquery-validation/dist/additional-methods.min.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+
+</html>
