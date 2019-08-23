@@ -3,17 +3,6 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 3000;
 const shuffle = require('shuffle-array');
-const fs = require('fs');
-const multer = require('multer');
-var storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'http://mantratechnolog.com/materiales/AppAds/public/uploads/images')
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.originalname)
-    }
-});
-var upload = multer({storage: storage});
 const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://ArjunDobaria:Pravin143@mantratechnolog-bjxu8.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, {useNewUrlParser: true});
@@ -34,7 +23,7 @@ client.connect((err, db) => {
             res.sendFile(__dirname + '/public/index.html');
         });
 
-        app.post('/view', upload.single('app_icon'), (req, res) => {
+        app.post('/view', (req, res) => {
             if (req.file && req.body) {
                 var myobj = {
                     app_name: req.body.app_name,
