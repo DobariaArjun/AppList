@@ -25,22 +25,23 @@ client.connect((err, db) => {
 
         app.post('/view', (req, res) => {
             if (req.body) {
-                var myobj = {
-                    app_name: req.body.app_name,
-                    package_name: req.body.package_name,
-                    icon_url: "http://mantratechnolog.com/materiales/AppAds/public/uploads/images/" + req.file.originalname,
-                    zone: req.body.gender1,
-                    account_name: req.body.gender
-                };
+                console.log(req.body);
+//                 var myobj = {
+//                     app_name: req.body.app_name,
+//                     package_name: req.body.package_name,
+//                     icon_url: "http://mantratechnolog.com/materiales/AppAds/public/uploads/images/" + req.file.originalname,
+//                     zone: req.body.gender1,
+//                     account_name: req.body.gender
+//                 };
 
-                console.log(myobj);
+//                 console.log(myobj);
 
-                collection.insertOne(myobj, function (err, res) {
-                    if (err) throw err;
-                    console.log("Inserted Successfully");
-                });
+//                 collection.insertOne(myobj, function (err, res) {
+//                     if (err) throw err;
+//                     console.log("Inserted Successfully");
+//                 });
 
-                res.sendFile(__dirname + '/public/view.html');
+//                 res.sendFile(__dirname + '/public/view.html');
             } else {
                 res.send("Plase provide Data!")
             }
