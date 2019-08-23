@@ -24,7 +24,7 @@ client.connect((err, db) => {
         });
 
         app.post('/view', (req, res) => {
-            if (req.file && req.body) {
+            if (req.body) {
                 var myobj = {
                     app_name: req.body.app_name,
                     package_name: req.body.package_name,
